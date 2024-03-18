@@ -1,25 +1,30 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Accreditation;
-use App\Models\Ecole;
-use App\Models\Filiere;
-use App\Models\Metier;
+use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
-class TestController extends Controller
+class AuthController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function register(Request $request)
     {
-        $ecole = Accreditation::find(1);
+        $newUser = new User();
+        $newUser->name = $request->name;
+        $newUser->email = $request->email;
+        $newUser->password = Hash::make($request->password);
 
-        // $ecole = $filiere->ecoles;
-        return response($ecole);
-
+        if ($newUser->save()) {
+            return response()->json([
+                "Nouvel Utilisateur" => $newUser,
+                "Message" => "Creation d'Utilisateur Réussi !"
+            ], 200);
+        }
     }
 
     /**

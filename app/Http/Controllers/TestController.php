@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Accreditation;
 use App\Models\Ecole;
 use App\Models\Filiere;
 use App\Models\Metier;
@@ -14,10 +15,11 @@ class TestController extends Controller
      */
     public function index()
     {
-        $metier = Metier::find(1)->with('filieres')->get();
-        // $metier = $filiere->metiers;
+        $ecole = Accreditation::find(1);
 
-        return response($metier);
+        // $ecole = $filiere->ecoles;
+        return response($ecole);
+
     }
 
     /**

@@ -16,4 +16,8 @@ class FiliereEcole extends Model
     public function filiere(){
         return $this->belongsTo(Filiere::class);
     }
+
+    public function accreditation(){
+        return $this->belongsTo(Accreditation::class);
+    }
 }

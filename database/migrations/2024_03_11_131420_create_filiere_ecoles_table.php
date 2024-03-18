@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Accreditation;
 use App\Models\Ecole;
 use App\Models\Filiere;
 use Illuminate\Database\Migrations\Migration;
@@ -17,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Ecole::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Filiere::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Accreditation::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

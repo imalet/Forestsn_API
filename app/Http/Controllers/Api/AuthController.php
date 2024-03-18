@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Register.
      */
     public function register(Request $request)
     {
@@ -28,34 +29,43 @@ class AuthController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Login
      */
-    public function store(Request $request)
+    public function login(Request $request)
     {
-        //
+        $credentials = $request->all();
+
+        if ($token = Auth::attempt($credentials)) {
+            return $this->respondWithToken($token);
+        }
+        return response()->json(['error' => 'Unauthorized'], 401);
     }
 
     /**
-     * Display the specified resource.
+     * respond With Token
      */
-    public function show(string $id)
+    protected function respondWithToken($token)
     {
-        //
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'bearer'
+        ]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Logout
      */
-    public function update(Request $request, string $id)
+    public function logout()
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        try {
+            Auth::guard('api')->logout();
+            return response()->json([
+                "Message" => "Utilisateur Deconnecté ! "
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                "Erreur" => "Non Connecté"
+            ]);
+        }
     }
 }

@@ -113,4 +113,26 @@ class EcoleController extends Controller
 
         return "Désolé, la suppression de l'école n'a pas réussi."; // Retourne un message en cas d'échec de la suppression
     }
+
+    /**
+     * Archieve or not a Specified Ecole.
+     */
+    public function archiver($id)
+    {
+        $ecole = Ecole::find($id); // Recherche une école par son identifiant
+
+        if (!$ecole) {
+            return response("L'école n'existe pas !"); // Retourne un message indiquant que l'école n'existe pas
+        }
+
+        // Change l'état d'archivage de l'école en fonction de l'état actuel
+        $ecole->archiver = !$ecole->archiver;
+        $ecole->save();
+
+        if ($ecole->archiver) {
+            return "L'école a été archivée temporairement.";
+        } else {
+            return "L'école a été désarchivée.";
+        }
+    }
 }

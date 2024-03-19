@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('abreviation_nom')->nullable();
             $table->text('description')->nullable();
             $table->decimal('frais_scolaire', 10, 2)->nullable();
+            $table->boolean('archiver')->default(false);
             $table->timestamps();
         });
         

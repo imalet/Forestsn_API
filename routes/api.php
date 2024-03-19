@@ -33,3 +33,4 @@ Route::post('/ecoles', [EcoleController::class, 'store'])->name('ecoles.store');
 Route::post('/ecoles/{ecole}', [EcoleController::class, 'update'])->name('ecoles.update');
 Route::get('/ecoles/{ecole}', [EcoleController::class, 'show'])->name('ecoles.show');
 Route::delete('/ecoles/{ecole}', [EcoleController::class, 'destroy'])->name('ecoles.destroy');
+Route::post('/ecoles/{id}/archive', [EcoleController::class,'archiver'])->name('ecoles.archive');

@@ -13,9 +13,15 @@ return new class extends Migration
     {
         Schema::create('ecoles', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
+            $table->string('imageFont')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('nom_ecole')->nullable();
+            $table->string('abreviation_nom')->nullable();
+            $table->text('description')->nullable();
+            $table->decimal('frais_scolaire', 10, 2)->nullable();
             $table->timestamps();
         });
+        
     }
 
     /**

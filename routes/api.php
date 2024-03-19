@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\EcoleController;
 use App\Http\Controllers\TestController;
+use App\Models\Ecole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 
 
 /*
@@ -24,3 +27,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth:api');
+
+Route::get('/ecoles', [EcoleController::class, 'index'])->name('ecoles');
+Route::post('/ecoles', [EcoleController::class, 'store'])->name('ecoles.store');
+Route::post('/ecoles/{ecole}', [EcoleController::class, 'update'])->name('ecoles.update');
+Route::get('/ecoles/{ecole}', [EcoleController::class, 'show'])->name('ecoles.show');
+Route::delete('/ecoles/{ecole}', [EcoleController::class, 'destroy'])->name('ecoles.destroy');

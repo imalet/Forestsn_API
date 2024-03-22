@@ -39,6 +39,7 @@ class EcoleController extends Controller
         $ecole->abreviation_nom = $request['abreviation_nom'];
         $ecole->description = $request['description'];
         $ecole->frais_scolaire = $request['frais_scolaire'];
+        $ecole->bourse_id = $request['bourse_id'];
 
         if ($ecole->save()) {
             return "Super c'est Stocker";
@@ -85,6 +86,8 @@ class EcoleController extends Controller
         $ecole->abreviation_nom = $request->abreviation_nom;
         $ecole->description = $request->description;
         $ecole->frais_scolaire = $request->frais_scolaire;
+        $ecole->bourse_id = $request->bourse_id;
+
 
         if ($ecole->save()) {
             return "Super, c'est mis à jour !";

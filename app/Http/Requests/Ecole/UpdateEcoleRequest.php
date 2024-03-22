@@ -28,6 +28,7 @@ class UpdateEcoleRequest extends FormRequest
             'frais_scolaire' => 'required|numeric',
             'imageFont' => 'nullable|file|mimes:jpeg,png,jpg|max:2048', // Facultatif, peut être nul
             'logo' => 'nullable|file|mimes:jpeg,png,jpg|max:2048', // Facultatif, peut être nul
+            'bourse_id'=> 'required|integer'
         ];
     }
 
@@ -48,6 +49,7 @@ class UpdateEcoleRequest extends FormRequest
             'logo.file' => 'Le logo doit être un fichier.',
             'logo.mimes' => 'Le logo doit être au format jpeg, png ou jpg.',
             'logo.max' => 'Le logo ne doit pas dépasser 2 Mo.',
+            'bourse_id.required' => 'Le type de bourse est requis scolaire est requis.',
         ];
     }
 }

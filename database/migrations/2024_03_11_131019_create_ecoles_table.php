@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Bourse;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -19,6 +20,7 @@ return new class extends Migration
             $table->string('abreviation_nom')->nullable();
             $table->text('description')->nullable();
             $table->decimal('frais_scolaire', 10, 2)->nullable();
+            $table->foreignIdFor(Bourse::class)->constrained()->cascadeOnDelete()->nullable();
             $table->boolean('archiver')->default(false);
             $table->timestamps();
         });

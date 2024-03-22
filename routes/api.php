@@ -2,12 +2,14 @@
 
 use App\Http\Controllers\Api\AccreditationController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\BourseController;
 use App\Http\Controllers\Api\EcoleController;
 use App\Http\Controllers\Api\FiliereController;
 use App\Http\Controllers\TestController;
 use App\Models\Ecole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -49,5 +51,11 @@ Route::post('/accreditations', [AccreditationController::class, 'store'])->name(
 Route::get('/accreditations/{accreditation}', [AccreditationController::class, 'show'])->name('accreditations.show');
 Route::post('/accreditations/{accreditation}', [AccreditationController::class, 'update'])->name('accreditations.update');
 Route::delete('/accreditations/{accreditation}', [AccreditationController::class, 'destroy'])->name('accreditations.destroy');
+
+Route::get('/bourses', [BourseController::class, 'index']); // Afficher tous les types de bourse
+Route::post('/bourses', [BourseController::class, 'store']); // Ajouter un nouveau type de bourse
+Route::get('/bourses/{bourse}', [BourseController::class, 'show']); // Afficher les détails d'un type de bourse spécifique
+Route::post('/bourses/{bourse}', [BourseController::class, 'update']); // Modifier un type de bourse existant
+Route::delete('/bourses/{bourse}', [BourseController::class, 'destroy']); // Supprimer un type de bourse
 
 

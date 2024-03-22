@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\EcoleController;
+use App\Http\Controllers\Api\FiliereController;
 use App\Http\Controllers\TestController;
 use App\Models\Ecole;
 use Illuminate\Http\Request;
@@ -34,3 +35,9 @@ Route::post('/ecoles/{ecole}', [EcoleController::class, 'update'])->name('ecoles
 Route::get('/ecoles/{ecole}', [EcoleController::class, 'show'])->name('ecoles.show');
 Route::delete('/ecoles/{ecole}', [EcoleController::class, 'destroy'])->name('ecoles.destroy');
 Route::post('/ecoles/{id}/archive', [EcoleController::class,'archiver'])->name('ecoles.archive');
+
+Route::get('/filieres', [FiliereController::class, 'index'])->name('filiere');
+Route::post('/filieres', [FiliereController::class, 'store'])->name('filiere.store');
+Route::post('/filieres/{filiere}', [FiliereController::class, 'update'])->name('filiere.update');
+Route::get('/filieres/{filiere}', [FiliereController::class, 'show'])->name('filiere.show');
+Route::delete('/filieres/{filiere}', [FiliereController::class, 'destroy'])->name('filiere.destroy');

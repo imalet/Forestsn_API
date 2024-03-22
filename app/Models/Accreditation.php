@@ -9,6 +9,8 @@ class Accreditation extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['type_accreditation', 'description_accreditation'];
+
     public function filiere_ecoles(){
         return $this->hasMany(FiliereEcole::class);
     }

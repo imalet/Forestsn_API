@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AccreditationController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\EcoleController;
 use App\Http\Controllers\Api\FiliereController;
@@ -31,13 +32,22 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middl
 
 Route::get('/ecoles', [EcoleController::class, 'index'])->name('ecoles');
 Route::post('/ecoles', [EcoleController::class, 'store'])->name('ecoles.store');
-Route::post('/ecoles/{ecole}', [EcoleController::class, 'update'])->name('ecoles.update');
 Route::get('/ecoles/{ecole}', [EcoleController::class, 'show'])->name('ecoles.show');
+Route::post('/ecoles/{ecole}', [EcoleController::class, 'update'])->name('ecoles.update');
 Route::delete('/ecoles/{ecole}', [EcoleController::class, 'destroy'])->name('ecoles.destroy');
 Route::post('/ecoles/{id}/archive', [EcoleController::class,'archiver'])->name('ecoles.archive');
 
 Route::get('/filieres', [FiliereController::class, 'index'])->name('filiere');
 Route::post('/filieres', [FiliereController::class, 'store'])->name('filiere.store');
-Route::post('/filieres/{filiere}', [FiliereController::class, 'update'])->name('filiere.update');
 Route::get('/filieres/{filiere}', [FiliereController::class, 'show'])->name('filiere.show');
+Route::post('/filieres/{filiere}', [FiliereController::class, 'update'])->name('filiere.update');
 Route::delete('/filieres/{filiere}', [FiliereController::class, 'destroy'])->name('filiere.destroy');
+
+Route::get('/accreditations', [AccreditationController::class, 'index'])->name('accreditations');
+Route::delete('/filieres/{filiere}', [FiliereController::class, 'destroy'])->name('filiere.destroy');
+Route::post('/accreditations', [AccreditationController::class, 'store'])->name('accreditations.store');
+Route::get('/accreditations/{accreditation}', [AccreditationController::class, 'show'])->name('accreditations.show');
+Route::post('/accreditations/{accreditation}', [AccreditationController::class, 'update'])->name('accreditations.update');
+Route::delete('/accreditations/{accreditation}', [AccreditationController::class, 'destroy'])->name('accreditations.destroy');
+
+

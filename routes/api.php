@@ -5,10 +5,12 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BourseController;
 use App\Http\Controllers\Api\EcoleController;
 use App\Http\Controllers\Api\FiliereController;
+use App\Http\Controllers\Api\MetierController;
 use App\Http\Controllers\TestController;
 use App\Models\Ecole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -57,5 +59,11 @@ Route::post('/bourses', [BourseController::class, 'store']); // Ajouter un nouve
 Route::get('/bourses/{bourse}', [BourseController::class, 'show']); // Afficher les détails d'un type de bourse spécifique
 Route::post('/bourses/{bourse}', [BourseController::class, 'update']); // Modifier un type de bourse existant
 Route::delete('/bourses/{bourse}', [BourseController::class, 'destroy']); // Supprimer un type de bourse
+
+Route::get('/metiers', [MetierController::class, 'index']);
+Route::post('/metiers', [MetierController::class, 'store']);
+Route::get('/metiers/{id}', [MetierController::class, 'show']);
+Route::post('/metiers/{id}', [MetierController::class, 'update']);
+Route::delete('/metiers/{id}', [MetierController::class, 'destroy']);
 
 

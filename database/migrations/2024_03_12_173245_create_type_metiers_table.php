@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\TypeMetier;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('metiers', function (Blueprint $table) {
+        Schema::create('type_metiers', function (Blueprint $table) {
             $table->id();
-            $table->string('image')->nullable();
             $table->string('nom');
             $table->string('description');
-            $table->foreignIdFor(TypeMetier::class)->constrained()->cascadeOnDelete()->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('metiers');
+        Schema::dropIfExists('type_metiers');
     }
 };

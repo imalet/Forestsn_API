@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\BourseController;
 use App\Http\Controllers\Api\EcoleController;
 use App\Http\Controllers\Api\FiliereController;
 use App\Http\Controllers\Api\MetierController;
+use App\Http\Controllers\Api\TypeMetierController;
 use App\Http\Controllers\TestController;
 use App\Models\Ecole;
 use Illuminate\Http\Request;
@@ -66,4 +67,8 @@ Route::get('/metiers/{id}', [MetierController::class, 'show']);
 Route::post('/metiers/{id}', [MetierController::class, 'update']);
 Route::delete('/metiers/{id}', [MetierController::class, 'destroy']);
 
-
+Route::get('/types-metiers', [TypeMetierController::class, 'index']);
+Route::get('/types-metiers/{id}', [TypeMetierController::class, 'show']);
+Route::post('/types-metiers', [TypeMetierController::class, 'store']);
+Route::post('/types-metiers/{id}', [TypeMetierController::class, 'update']);
+Route::delete('/types-metiers/{id}', [TypeMetierController::class, 'destroy']);
